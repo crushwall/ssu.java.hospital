@@ -1,6 +1,6 @@
-package models;
+package model;
 
-public class User {
+public class User extends Human{
     private int id;
     private String email;
     private String username;

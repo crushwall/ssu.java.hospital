@@ -1,11 +1,11 @@
-package models;
+package model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class PatientCard {
     private int id;
     private int clientId;
-    private HashMap<Integer, CardRecord> records;
+    private ArrayList<Appointment> records;
 
     public int getId() {
         return id;
@@ -23,11 +23,11 @@ public class PatientCard {
         this.clientId = clientId;
     }
 
-    public HashMap<Integer, CardRecord> getRecords() {
+    public ArrayList<Appointment> getRecords() {
         return records;
     }
 
-    public void setRecords(HashMap<Integer, CardRecord> records) {
+    public void setRecords(ArrayList<Appointment> records) {
         this.records = records;
     }
 }

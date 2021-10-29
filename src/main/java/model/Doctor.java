@@ -1,11 +1,13 @@
-package models;
+package model;
+
+import model.enums.Specialization;
 
 import java.util.Date;
 
-public class Doctor extends Human{
+public class Doctor extends User{
     private Date employmentDate;
     private String education;
-    private String position;
+    private Specialization specialization;
     private Date startWorkingTime;
     private Date endWorkingTime;
 
@@ -25,12 +27,12 @@ public class Doctor extends Human{
         this.education = education;
     }
 
-    public String getPosition() {
-        return position;
+    public Specialization getSpecialization() {
+        return specialization;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
     }
 
     public Date getStartWorkingTime() {

@@ -1,8 +1,8 @@
-package models;
+package model;
 
 import java.util.Date;
 
-public class Human extends User{
+public class Human{
     private String firstName;
     private String lastName;
     private Date birthday;
