@@ -4,6 +4,6 @@
     <title>Start page</title>
 </head>
 <body>
-<h1>${client}</h1>
+<h1>${client.firstName}</h1>
 </body>
 </html>
