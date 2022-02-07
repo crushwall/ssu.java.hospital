@@ -11,6 +11,16 @@
     <form action="clients" method="get">
         <input type="submit" value="Clients">
     </form>
+    <form action="cards" method="get">
+        <input type="submit" value="Cards">
+
+    </form>
+    <form action="doctors" method="get">
+        <input type="submit" value="Doctors">
+    </form>
+    <form action="appointments" method="get">
+        <input type="submit" value="Appointments">
+    </form>
 </nav>
 </body>
 </html>

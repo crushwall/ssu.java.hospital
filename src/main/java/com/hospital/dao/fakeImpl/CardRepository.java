@@ -35,12 +35,12 @@ public class CardRepository implements com.hospital.dao.CardRepository {
 
     @Override
     public void update(PatientCard patientCard) {
-        cards.remove(patientCard.getId());
+        cards.removeIf(c -> c.getId() == patientCard.getId());
         cards.add(patientCard);
     }
 
     @Override
     public void remove(int id) {
-        cards.remove(id);
+        cards.removeIf(c -> c.getId() == id);
     }
 }

@@ -35,12 +35,12 @@ public class DoctorRepository implements com.hospital.dao.DoctorRepository {
 
     @Override
     public void update(Doctor doctor) {
-        doctors.remove(doctor.getId());
+        doctors.removeIf(d -> d.getId() == doctor.getId());
         doctors.add(doctor);
     }
 
     @Override
     public void remove(int id) {
-        doctors.remove(id);
+        doctors.removeIf(d -> d.getId() == id);
     }
 }

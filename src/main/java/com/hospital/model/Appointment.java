@@ -3,13 +3,13 @@ package com.hospital.model;
 import com.hospital.model.enums.AppointmentStatus;
 import com.hospital.model.enums.ClientStatus;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Appointment {
     private int id;
     private int doctorId;
     private int clientId;
-    private Date date;
+    private LocalDateTime date;
     private AppointmentStatus appointmentStatus;
     private ClientStatus clientStatus;
 
@@ -37,11 +37,11 @@ public class Appointment {
         this.clientId = clientId;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

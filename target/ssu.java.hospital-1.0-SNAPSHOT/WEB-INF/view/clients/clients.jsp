@@ -4,14 +4,16 @@
     <style>
         <%@include file="/WEB-INF/view/css/style.css"%>
     </style>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <title>Clients</title>
 </head>
 <body>
 <nav>
-    <a class="button">Add</a>
+    <form action="client-editing/new" method="get">
+        <input type="submit" value="Add">
+    </form>
 </nav>
 
 <article>
@@ -32,18 +34,20 @@
                 <td>${client.firstName}</td>
                 <td>${client.lastName}</td>
                 <td>${client.getSex().toString()}</td>
-                <td><p><fmt:formatDate value="${client.birthday}" pattern="E dd.M.y"/> </p></td>
+                <td><p><fmt:formatDate value="${client.birthday}" pattern="yyyy-MM-dd"/></p></td>
                 <td>${client.phoneNumber}</td>
                 <td>${client.email}</td>
                 <td>
-                    <form action="clients" method="get">
-                        <input type="submit" value="Edit">
-                    </form>
+                    <a href="client-editing/edit?id=${client.id}">Edit</a>
+                        <%--                    <form action="client-editing/edit?id=${client.id}" method="get">--%>
+                        <%--                        <input type="submit" value="Edit">--%>
+                        <%--                    </form>--%>
                 </td>
                 <td>
-                    <form action="clients" method="post">
-                        <input type="submit" value="Delete">
-                    </form>
+                    <a href="clients/delete?id=${client.id}">Delete</a>
+                        <%--                    <form action="clients/delete?id=${client.id}" method="post">--%>
+                        <%--                        <input type="submit" value="Delete" />--%>
+                        <%--                    </form>--%>
                 </td>
             </tr>
         </c:forEach>

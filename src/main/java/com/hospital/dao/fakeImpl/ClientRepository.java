@@ -35,12 +35,12 @@ public class ClientRepository implements com.hospital.dao.ClientRepository {
 
     @Override
     public void update(Client client) {
-        clients.remove(client.getId());
+        clients.removeIf(c -> c.getId() == client.getId());
         clients.add(client);
     }
 
     @Override
     public void remove(int id) {
-        clients.remove(id);
+        clients.removeIf(c -> c.getId() == id);
     }
 }

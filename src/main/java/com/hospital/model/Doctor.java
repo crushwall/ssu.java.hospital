@@ -2,14 +2,15 @@ package com.hospital.model;
 
 import com.hospital.model.enums.Specialization;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class Doctor extends User{
     private Date employmentDate;
     private String education;
     private Specialization specialization;
-    private Date startWorkingTime;
-    private Date endWorkingTime;
+    private Time startWorkingTime;
+    private Time endWorkingTime;
 
     public Date getEmploymentDate() {
         return employmentDate;
@@ -35,19 +36,19 @@ public class Doctor extends User{
         this.specialization = specialization;
     }
 
-    public Date getStartWorkingTime() {
+    public Time getStartWorkingTime() {
         return startWorkingTime;
     }
 
-    public void setStartWorkingTime(Date startWorkingTime) {
+    public void setStartWorkingTime(Time startWorkingTime) {
         this.startWorkingTime = startWorkingTime;
     }
 
-    public Date getEndWorkingTime() {
+    public Time getEndWorkingTime() {
         return endWorkingTime;
     }
 
-    public void setEndWorkingTime(Date endWorkingTime) {
+    public void setEndWorkingTime(Time endWorkingTime) {
         this.endWorkingTime = endWorkingTime;
     }
 }

@@ -35,12 +35,12 @@ public class AppointmentRepository implements com.hospital.dao.AppointmentReposi
 
     @Override
     public void update(Appointment appointment) {
-        appointments.remove(appointment.getId());
+        appointments.removeIf(a -> a.getId() == appointment.getId());
         appointments.add(appointment);
     }
 
     @Override
     public void remove(int id) {
-        appointments.remove(id);
+        appointments.removeIf(a -> a.getId() == id);
     }
 }
