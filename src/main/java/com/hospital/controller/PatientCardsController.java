@@ -1,5 +1,6 @@
 package com.hospital.controller;
 
+import com.hospital.entity.PatientCard;
 import com.hospital.service.CardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class PatientCardsController {
 
     @RequestMapping(value = "/cards", method = RequestMethod.GET)
     public ModelAndView getCards(){
+
         ModelAndView modelAndView = new ModelAndView("cards/cards");
         modelAndView.addObject("cards", cardService.getAll());
 
@@ -24,11 +26,9 @@ public class PatientCardsController {
     }
 
     @RequestMapping(value = "cards/delete", params = "id", method = RequestMethod.GET)
-    public ModelAndView deleteCard(@RequestParam(value = "id") int id){
+    public String deleteCard(@RequestParam(value = "id") int id){
         cardService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("cards/cards");
-        modelAndView.addObject("cards", cardService.getAll());
 
-        return modelAndView;
+        return "redirect:/cards";
     }
 }

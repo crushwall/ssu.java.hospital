@@ -10,17 +10,22 @@
     <title>Editing</title>
 </head>
 <body>
+<nav>
+    <form action="${pageContext.request.contextPath}/cards" method="get">
+        <input type="submit" value="Back">
+    </form>
+</nav>
 <main>
     <form action="save" method="Post">
         <input type="hidden" name="id" value="${card.id}">
         <label>Client ID:
-            <input type="text" name="first-name" value="${card.clientId}">
+            <input type="text" name="first-name" value="${card.client.id}">
         </label>
         <br/>
-        <c:forEach items="${appointments}" var="appointment">
-            <label>Record #${appointment.id}
-                <input type="checkbox" name="appointment" value="${appointment.id}"
-                        <c:if test="${card.records.contains(appointment)}">checked</c:if>/>
+        <c:forEach items="${records}" var="record">
+            <label>Record #${record.id}
+                <input type="checkbox" name="appointment" value="${record.id}"
+                        <c:if test="${card.records.contains(record)}">checked="checked"</c:if> />
             </label>
             <br>
         </c:forEach>

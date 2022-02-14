@@ -10,6 +10,11 @@
     <title>Editing</title>
 </head>
 <body>
+<nav>
+    <form action="${pageContext.request.contextPath}/doctors" method="get">
+        <input type="submit" value="Back">
+    </form>
+</nav>
 <main>
     <form action="save" method="Post">
         <input type="hidden" name="id" value="${doctor.id}">

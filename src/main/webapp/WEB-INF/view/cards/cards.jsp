@@ -11,6 +11,9 @@
 </head>
 <body>
 <nav>
+    <form action="${pageContext.request.contextPath}/" method="get">
+        <input type="submit" value="Home">
+    </form>
     <form action="card-editing/new" method="get">
         <input type="submit" value="Add">
     </form>
@@ -27,7 +30,7 @@
         <c:forEach items="${cards}" var="card" varStatus="tagStatus">
             <tr>
                 <td>${card.id}</td>
-                <td>${card.clientId}</td>
+                <td>${card.client.id}</td>
                 <td>
                     <ol>
                         <c:forEach items="${card.records}" var="record" varStatus="status">

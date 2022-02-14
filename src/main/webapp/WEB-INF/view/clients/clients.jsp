@@ -11,6 +11,9 @@
 </head>
 <body>
 <nav>
+    <form action="${pageContext.request.contextPath}/" method="get">
+        <input type="submit" value="Home">
+    </form>
     <form action="client-editing/new" method="get">
         <input type="submit" value="Add">
     </form>

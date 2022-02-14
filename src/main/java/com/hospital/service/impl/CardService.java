@@ -1,35 +1,41 @@
 package com.hospital.service.impl;
 
-import com.hospital.dao.CardRepository;
-import com.hospital.model.PatientCard;
+import com.hospital.dao.crudImpl.CrudPatientCardRepository;
+import com.hospital.entity.Client;
+import com.hospital.entity.PatientCard;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CardService implements com.hospital.service.CardService {
     @Autowired
-    private CardRepository repository;
+    private CrudPatientCardRepository repository;
 
     @Override
     public void add(PatientCard patientCard) {
-     repository.add(patientCard);
+     repository.save(patientCard);
     }
 
     @Override
     public PatientCard getById(int id) {
-        return repository.getById(id);
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Iterable<PatientCard> getAll() {
-        return repository.getAll();
+        return repository.findAll();
     }
 
     @Override
     public void update(PatientCard patientCard) {
-        repository.update(patientCard);
+        repository.save(patientCard);
     }
 
     @Override
     public void remove(int id) {
-        repository.remove(id);
+        repository.deleteById(id);
+    }
+
+    @Override
+    public PatientCard getByClient(Client client){
+        return repository.findPatientCardByClient(client);
     }
 }

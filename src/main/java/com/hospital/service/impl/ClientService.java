@@ -1,35 +1,34 @@
 package com.hospital.service.impl;
 
-import com.hospital.dao.ClientRepository;
-import com.hospital.model.Client;
+import com.hospital.dao.crudImpl.CrudClientRepository;
+import com.hospital.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class ClientService implements com.hospital.service.ClientService {
     @Autowired
-    private ClientRepository repository;
+    private CrudClientRepository repository;
 
     @Override
     public void add(Client client) {
-        repository.add(client);
+        repository.save(client);
     }
 
     @Override
-    public Client getById(int id) {
-        return repository.getById(id);
-    }
+    public Client getById(int id) { return repository.findById(id).orElse(null); }
 
     @Override
     public Iterable<Client> getAll() {
-        return repository.getAll();
+        return repository.findAll();
     }
 
     @Override
     public void update(Client client) {
-        repository.update(client);
+        repository.save(client);
     }
 
     @Override
     public void remove(int id) {
-        repository.remove(id);
+        repository.deleteById(id);
     }
 }

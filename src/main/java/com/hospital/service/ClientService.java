@@ -1,6 +1,6 @@
 package com.hospital.service;
 
-import com.hospital.model.Client;
+import com.hospital.entity.Client;
 
 public interface ClientService extends Service<Client>{
 }

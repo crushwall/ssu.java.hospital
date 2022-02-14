@@ -24,11 +24,9 @@ public class AppointmentsController {
     }
 
     @RequestMapping(value = "appointments/delete", params = "id", method = RequestMethod.GET)
-    public ModelAndView deleteAppointment(@RequestParam(value = "id") int id){
+    public String deleteAppointment(@RequestParam(value = "id") int id){
         appointmentService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("appointments/appointments");
-        modelAndView.addObject("appointments", appointmentService.getAll());
 
-        return modelAndView;
+        return "redirect:/appointments";
     }
 }

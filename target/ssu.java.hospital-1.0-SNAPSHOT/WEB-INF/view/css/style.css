@@ -25,10 +25,20 @@ html{
 a, input{
     background-color: rgb(22, 22, 22);
     font-family: 'JetBrains Mono', sans-serif;
-    font-size: large;
-    border: solid 2px goldenrod;
-    border-radius: 8px;
+    font-size: 25px;
+    border-radius: 5px;
     color: goldenrod;
+}
+
+a {
+    text-decoration: none;
+    padding: 0 5px;
+    background: goldenrod;
+    color: black;
+}
+
+a:hover {
+    background-image: radial-gradient(ellipse at center,darkgoldenrod, gold);
 }
 
 input[type="submit"] {
@@ -48,16 +58,29 @@ input[type=number]::placeholder{
 
 table{
     width: 100%;
-    border: 1px solid black;
+    border: none;
 }
 
 td, th{
-    border: 1px solid darkorange;
+    border: 1px solid darkgoldenrod;
 }
 
-header, article, footer {
+article, footer {
     border: 1px solid gray;
 }
+
 header, nav, article {
     margin-bottom: 1em;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    font-size: 40px;
+    color: black;
+    background-image: linear-gradient(to left, goldenrod, gold, goldenrod);
+}
+
+nav form {
+    display:inline;
 }

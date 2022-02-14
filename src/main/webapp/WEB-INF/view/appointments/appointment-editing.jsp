@@ -10,15 +10,20 @@
     <title>Editing</title>
 </head>
 <body>
+<nav>
+    <form action="${pageContext.request.contextPath}/appointments" method="get">
+        <input type="submit" value="Back">
+    </form>
+</nav>
 <main>
     <form action="save" method="Post">
         <input type="hidden" name="id" value="${appointment.id}">
         <label>Doctor ID:
-            <input type="text" name="doctor-id" value="${appointment.doctorId}">
+            <input type="text" name="doctor-id" value="${appointment.doctor.id}">
         </label>
         <br/>
         <label>Client ID:
-            <input type="text" name="client-id" value="${appointment.clientId}"/>
+            <input type="text" name="client-id" value="${card.client.id}"/>
         </label>
         <br/>
         <label>Date:

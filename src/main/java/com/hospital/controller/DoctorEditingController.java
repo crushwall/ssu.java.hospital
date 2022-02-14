@@ -1,9 +1,9 @@
 package com.hospital.controller;
 
-import com.hospital.model.Doctor;
-import com.hospital.model.enums.HumanSex;
-import com.hospital.model.enums.Specialization;
-import com.hospital.service.impl.DoctorService;
+import com.hospital.entity.Doctor;
+import com.hospital.entity.enums.HumanSex;
+import com.hospital.entity.enums.Specialization;
+import com.hospital.service.DoctorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,7 +41,7 @@ public class DoctorEditingController {
     }
 
     @RequestMapping(value = "/doctor-editing/save", method = RequestMethod.POST)
-    public ModelAndView save(@RequestParam(value = "id", required = false, defaultValue = "-1") int id,
+    public String save(@RequestParam(value = "id", required = false, defaultValue = "-1") int id,
                              @RequestParam(value = "first-name") String firstName,
                              @RequestParam(value = "last-name") String lastName,
                              @RequestParam(value = "birthday") String birthday,
@@ -55,34 +55,32 @@ public class DoctorEditingController {
                              @RequestParam(value = "specialization") String specialization,
                              @RequestParam(value = "start-working-time") String startWorkingTime,
                              @RequestParam(value = "end-working-time") String endWorkingTime) throws ParseException {
-        Doctor doctor = new Doctor(){
-            {
-                if (!isNew){
-                    setId(id);
-                }
+        Doctor doctor = new Doctor();
 
-                setFirstName(firstName);
-                setLastName(lastName);
+        if (!isNew){
+            doctor.setId(id);
+        }
 
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = format.parse(birthday);
-                setBirthday(date);
+        doctor.setFirstName(firstName);
+        doctor.setLastName(lastName);
 
-                setSex(HumanSex.valueOf(sex));
-                setPhoneNumber(phone);
-                setEmail(email);
-                setUsername(username);
-                setPassword(password);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(birthday);
+        doctor.setBirthday(date);
 
-                Date employment = format.parse(employmentDate);
-                setEmploymentDate(employment);
+        doctor.setSex(HumanSex.valueOf(sex));
+        doctor.setPhoneNumber(phone);
+        doctor.setEmail(email);
+        doctor.setUsername(username);
+        doctor.setPassword(password);
 
-                setEducation(education);
-                setSpecialization(Specialization.valueOf(specialization));
-                setStartWorkingTime(Time.valueOf(LocalTime.parse(startWorkingTime)));
-                setEndWorkingTime(Time.valueOf(LocalTime.parse(endWorkingTime)));
-            }
-        };
+        Date employment = format.parse(employmentDate);
+        doctor.setEmploymentDate(employment);
+
+        doctor.setEducation(education);
+        doctor.setSpecialization(Specialization.valueOf(specialization));
+        doctor.setStartWorkingTime(Time.valueOf(LocalTime.parse(startWorkingTime)));
+        doctor.setEndWorkingTime(Time.valueOf(LocalTime.parse(endWorkingTime)));
 
         if (isNew){
             doctorService.add(doctor);
@@ -91,9 +89,6 @@ public class DoctorEditingController {
             doctorService.update(doctor);
         }
 
-        ModelAndView modelAndView = new ModelAndView("doctors/doctors");
-        modelAndView.addObject("doctors", doctorService.getAll());
-
-        return modelAndView;
+        return "redirect:/doctors";
     }
 }

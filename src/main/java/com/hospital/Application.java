@@ -1,7 +1,7 @@
 package com.hospital;
 
 import com.hospital.config.AppConfig;
-import com.hospital.model.Client;
+import com.hospital.entity.Client;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.hospital.service.impl.ClientService;
