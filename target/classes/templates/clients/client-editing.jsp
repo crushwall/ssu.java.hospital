@@ -4,8 +4,8 @@
 <html>
 <head>
     <style>
-        <%@include file="/WEB-INF/view/css/style.css"%>
-        <%@include file="/WEB-INF/view/css/edit-style.css"%>
+        <%@include file="/templates/view/css/style.css"%>
+        <%@include file="/templates/view/css/edit-style.css"%>
     </style>
     <title>Editing</title>
 </head>

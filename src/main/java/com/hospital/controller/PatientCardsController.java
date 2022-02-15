@@ -1,7 +1,7 @@
 package com.hospital.controller;
 
-import com.hospital.entity.PatientCard;
 import com.hospital.service.CardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,11 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class PatientCardsController {
-    private final CardService cardService;
-
-    public PatientCardsController(CardService cardService) {
-        this.cardService = cardService;
-    }
+    @Autowired
+    private CardService cardService;
 
     @RequestMapping(value = "/cards", method = RequestMethod.GET)
     public ModelAndView getCards(){

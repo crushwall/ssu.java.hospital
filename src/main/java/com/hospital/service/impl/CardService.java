@@ -1,10 +1,12 @@
 package com.hospital.service.impl;
 
-import com.hospital.dao.crudImpl.CrudPatientCardRepository;
+import com.hospital.repository.CrudPatientCardRepository;
 import com.hospital.entity.Client;
 import com.hospital.entity.PatientCard;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CardService implements com.hospital.service.CardService {
     @Autowired
     private CrudPatientCardRepository repository;

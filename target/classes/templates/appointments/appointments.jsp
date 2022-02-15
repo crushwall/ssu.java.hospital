@@ -2,7 +2,7 @@
 <html>
 <head>
     <style>
-        <%@include file="/WEB-INF/view/css/style.css"%>
+        <%@include file="/templates/view/css/style.css"%>
     </style>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

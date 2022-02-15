@@ -1,12 +1,14 @@
 package com.hospital.service.impl;
 
-import com.hospital.dao.crudImpl.CrudAppointmentRepository;
+import com.hospital.repository.AppointmentRepository;
 import com.hospital.entity.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AppointmentService implements com.hospital.service.AppointmentService {
     @Autowired
-    private CrudAppointmentRepository repository;
+    private AppointmentRepository repository;
 
     @Override
     public void add(Appointment appointment) {

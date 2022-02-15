@@ -4,6 +4,7 @@ import com.hospital.entity.Doctor;
 import com.hospital.entity.enums.HumanSex;
 import com.hospital.entity.enums.Specialization;
 import com.hospital.service.DoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,12 +19,9 @@ import java.util.Date;
 
 @Controller
 public class DoctorEditingController {
-    private final DoctorService doctorService;
+    @Autowired
+    private DoctorService doctorService;
     private boolean isNew;
-
-    public DoctorEditingController(DoctorService doctorService) {
-        this.doctorService = doctorService;
-    }
 
     @RequestMapping(value = "/doctor-editing/new", method = RequestMethod.GET)
     public ModelAndView load() {

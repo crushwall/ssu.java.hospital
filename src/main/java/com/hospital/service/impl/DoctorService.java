@@ -1,12 +1,14 @@
 package com.hospital.service.impl;
 
-import com.hospital.dao.crudImpl.CrudDoctorRepository;
+import com.hospital.repository.DoctorRepository;
 import com.hospital.entity.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DoctorService implements com.hospital.service.DoctorService {
     @Autowired
-    private CrudDoctorRepository repository;
+    private DoctorRepository repository;
 
     @Override
     public void add(Doctor doctor) {

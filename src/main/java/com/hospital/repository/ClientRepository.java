@@ -1,9 +1,9 @@
-package com.hospital.dao.crudImpl;
+package com.hospital.repository;
 
 import com.hospital.entity.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CrudClientRepository extends CrudRepository<Client, Integer> {
+public interface ClientRepository extends CrudRepository<Client, Integer> {
 }

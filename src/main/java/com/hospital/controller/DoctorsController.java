@@ -1,5 +1,6 @@
 package com.hospital.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,11 +10,8 @@ import com.hospital.service.DoctorService;
 
 @Controller
 public class DoctorsController {
-    private final DoctorService doctorService;
-
-    public DoctorsController(DoctorService doctorService) {
-        this.doctorService = doctorService;
-    }
+    @Autowired
+    private DoctorService doctorService;
 
     @RequestMapping(value = "/doctors", method = RequestMethod.GET)
     public ModelAndView getDoctors(){

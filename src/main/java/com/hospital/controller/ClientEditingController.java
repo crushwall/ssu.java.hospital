@@ -3,12 +3,12 @@ package com.hospital.controller;
 import com.hospital.entity.Client;
 import com.hospital.entity.enums.HumanSex;
 import com.hospital.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -17,12 +17,9 @@ import java.util.Date;
 
 @Controller
 public class ClientEditingController {
-    private final ClientService clientService;
+    @Autowired
+    private ClientService clientService;
     private boolean isNew;
-
-    public ClientEditingController(ClientService clientService) {
-        this.clientService = clientService;
-    }
 
     @RequestMapping(value = "/client-editing/new", method = RequestMethod.GET)
     public ModelAndView load() {
