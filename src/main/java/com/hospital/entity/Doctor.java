@@ -32,4 +32,8 @@ public class Doctor extends User{
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "record_id")
     private Set<Appointment> records;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name="role_id", nullable = false)
+    private Role role;
 }

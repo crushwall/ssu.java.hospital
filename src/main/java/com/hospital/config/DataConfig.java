@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories("com.hospital.dao.crudImpl")
+@EnableJpaRepositories("com.hospital.repository")
 public class DataConfig {
 
     @Bean

@@ -5,6 +5,7 @@ import com.hospital.entity.PatientCard;
 import com.hospital.service.AppointmentService;
 import com.hospital.service.CardService;
 import com.hospital.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,18 +18,15 @@ import java.util.HashSet;
 
 @Controller
 public class PatientCardEditingController {
-    private final CardService cardService;
-    private final AppointmentService appointmentService;
-    private final ClientService clientService;
-    private boolean isNew;
+    @Autowired
+    private CardService cardService;
 
-    public PatientCardEditingController(CardService cardService,
-                                        AppointmentService appointmentService,
-                                        ClientService clientService) {
-        this.cardService = cardService;
-        this.appointmentService = appointmentService;
-        this.clientService = clientService;
-    }
+    @Autowired
+    private AppointmentService appointmentService;
+
+    @Autowired
+    private ClientService clientService;
+    private boolean isNew;
 
     @RequestMapping(value = "/card-editing/new", method = RequestMethod.GET)
     public ModelAndView load() {
