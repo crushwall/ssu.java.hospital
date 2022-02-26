@@ -1,31 +1,48 @@
 package com.hospital.controller;
 
-import com.hospital.service.CardService;
+import com.hospital.entity.Client;
+import com.hospital.entity.PatientCard;
+import com.hospital.service.ClientService;
+import com.hospital.service.PatientCardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class PatientCardsController {
     @Autowired
-    private CardService cardService;
+    private PatientCardService cardService;
 
-    @RequestMapping(value = "/cards", method = RequestMethod.GET)
-    public ModelAndView getCards(){
+    @Autowired
+    private ClientService clientService;
 
-        ModelAndView modelAndView = new ModelAndView("cards/cards");
-        modelAndView.addObject("cards", cardService.getAll());
-
-        return modelAndView;
+    @Secured("ROLE_DOCTOR")
+    @GetMapping(value = "/cards")
+    public Iterable<PatientCard> getCards(){
+        return cardService.getAll();
     }
 
-    @RequestMapping(value = "cards/delete", params = "id", method = RequestMethod.GET)
-    public String deleteCard(@RequestParam(value = "id") int id){
+    @Secured("ROLE_ADMIN")
+    @DeleteMapping(value = "cards/delete", params = "id")
+    public Iterable<PatientCard> deleteCard(@RequestParam(value = "id") int id){
         cardService.remove(id);
+        return cardService.getAll();
+    }
 
-        return "redirect:/cards";
+    @Secured({"ROLE_CLIENT", "ROLE_DOCTOR"})
+    @GetMapping(value = "/card")
+    public PatientCard getCard(){
+        Client client = clientService.getByUsername(getCurrentUsername());
+        return cardService.getByClient(client);
+    }
+
+    private String getCurrentUsername() {
+        SecurityContext context = SecurityContextHolder.getContext();
+        UserDetails userDetails = (UserDetails) context.getAuthentication().getPrincipal();
+
+        return userDetails.getUsername();
     }
 }

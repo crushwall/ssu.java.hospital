@@ -1,6 +1,8 @@
 package com.hospital.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -9,7 +11,20 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Client extends User{
+public class Client extends Human {
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column
+    private String email;
+
+    @Column
+    private String username;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private Appointment appointment;
+
     @OneToOne(fetch = FetchType.EAGER)
     private PatientCard patientCard;
 }

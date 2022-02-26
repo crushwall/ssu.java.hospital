@@ -1,16 +1,18 @@
 package com.hospital.entity;
 
-import com.hospital.entity.enums.HumanSex;
-import lombok.*;
+import com.hospital.enums.HumanSex;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@MappedSuperclass
 @Getter
 @Setter
 @NoArgsConstructor
-public class Human{
+@MappedSuperclass
+public class Human {
     @Column
     private String firstName;
 

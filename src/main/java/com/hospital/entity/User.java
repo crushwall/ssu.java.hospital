@@ -1,27 +1,33 @@
 package com.hospital.entity;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
-@MappedSuperclass
-@Getter
-@Setter
+@Data
+@Entity
+@Table(name = "users")
 @NoArgsConstructor
-public class User extends Human {
+public class User {
+
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
 
-    @Column
-    private String email;
+    @Column(name = "name")
+    private String name;
 
-    @Column
-    private String username;
-
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private Appointment appointment;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private List<Role> roles;
 }

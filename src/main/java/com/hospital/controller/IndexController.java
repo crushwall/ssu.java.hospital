@@ -1,13 +1,29 @@
 package com.hospital.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.hospital.entity.User;
+import com.hospital.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class IndexController {
-    @GetMapping("/")
-    public String welcome(Model model){
-        return "index";
+    @Autowired
+    private UserService userService;
+
+    @ResponseBody
+    @GetMapping({"/", "/index"})
+    public String index() {
+        return "HOSPITAL";
+    }
+
+    @PostMapping("/admin")
+    public String admin() {
+        User user = new User();
+        user.setName("admin");
+        user.setPassword("admin");
+
+        userService.registerAdmin(user);
+
+        return "ADMIN CREATED";
     }
 }

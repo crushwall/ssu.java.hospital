@@ -1,4 +1,4 @@
-package com.hospital.entity.enums;
+package com.hospital.enums;
 
 public enum HumanSex {
     Male,

@@ -5,7 +5,13 @@ import com.hospital.entity.PatientCard;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface CrudPatientCardRepository extends CrudRepository<PatientCard, Integer> {
-    PatientCard findPatientCardByClient(Client client);
+public interface PatientCardRepository extends CrudRepository<PatientCard, Long> {
+    PatientCard findByClient(Client client);
+
+    Optional<PatientCard> findById(long id);
+
+    void deleteById(long id);
 }

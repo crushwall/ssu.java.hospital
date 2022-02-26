@@ -1,7 +1,9 @@
 package com.hospital.entity;
 
-import com.hospital.entity.enums.Specialization;
-import lombok.*;
+import com.hospital.enums.Specialization;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -13,7 +15,20 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Doctor extends User{
+public class Doctor extends Human{
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column
+    private String email;
+
+    @Column
+    private String username;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private Appointment appointment;
+
     @Temporal(TemporalType.DATE)
     private Date employmentDate;
 

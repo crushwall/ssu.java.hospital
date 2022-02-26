@@ -1,8 +1,10 @@
 package com.hospital.entity;
 
-import com.hospital.entity.enums.AppointmentStatus;
-import com.hospital.entity.enums.ClientStatus;
-import lombok.*;
+import com.hospital.enums.AppointmentStatus;
+import com.hospital.enums.ClientStatus;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 public class Appointment {
     @Id
     @GeneratedValue()
-    private int id;
+    private long id;
 
     @OneToOne(fetch = FetchType.EAGER)
     private Doctor doctor;
